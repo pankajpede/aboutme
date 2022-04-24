@@ -214,10 +214,10 @@ p{
 .home-text{
     p{
         padding: 10px 0 0 0;
-        font-size: 14px;
+        // font-size: 14px;
         font-weight: 100;
         line-height: 25px;
-        color: #a2a1a1;
+        color: #978585;
     }
     ul{
         padding: 0 0 0 55px;
@@ -290,7 +290,6 @@ p{
         font-weight: normal;
       }
     }
-
   .title {
     font-size: 38px;
     position: relative;
@@ -344,3 +343,58 @@ p{
         }
     }
 }
+.shape-wrapper{
+    position: relative;
+    &::before, &::after{
+        content: '';
+        position: fixed;
+        top: -60px;
+        left: 9px;
+        width: 250px;
+        height: 250px;
+        background-image: url('../images/shape/shape-1.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    &::after{
+        background-image: url('../images/shape/shape-2.svg');
+        left: unset;
+        top: unset;
+        right: -20px;
+        bottom: -10px;
+    }
+}
+
+// allinone-home
+.allinone-home{
+    .content-wrapper{
+      box-shadow: 0 0 10px #999;
+      border-radius: 10px;
+      img{
+        border-radius: 10px;
+      }
+      .links-wrapper{
+        .links-item{
+          a{
+            text-decoration: none;
+            color: #212529;
+            margin: 3px 0;
+            float: left;
+            width: 100%;
+            font-size: 16px;
+            &:hover, &:focus, &:active:focus{
+              text-decoration: underline;
+              color: #FAC921;
+            }
+            &.disabled{
+                color: #ccc;
+                &:hover, &:focus, &:active:focus{
+                    text-decoration: none;
+                    color: #ccc;
+                }
+            }
+          }
+        }
+      }
+    }
+  }
