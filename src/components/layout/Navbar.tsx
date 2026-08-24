@@ -179,7 +179,7 @@ export function Navbar() {
                 {/* WORK MEGA DROPDOWN PANEL */}
                 <div
                   ref={workRef}
-                  className={`absolute right-[-140px] top-full mt-3 w-[660px] max-w-[calc(100vw-32px)] bg-white border border-border rounded-xl p-6 z-50 text-ink shadow-[0_24px_54px_rgba(36,36,37,0.12)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  className={`absolute right-[-140px] top-full mt-3 w-[660px] max-w-[calc(100vw-32px)] bg-surface border border-border rounded-xl p-6 z-50 text-ink shadow-[0_24px_54px_rgba(36,36,37,0.12)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     workOpen
                       ? 'opacity-100 translate-y-0 scale-100 visible pointer-events-auto'
                       : 'opacity-0 -translate-y-2 scale-98 invisible pointer-events-none'
@@ -294,7 +294,7 @@ export function Navbar() {
 
               {/* CONNECT COMPACT DROPDOWN PANEL */}
               <div
-                className={`absolute right-0 top-full mt-3 w-[270px] bg-white border border-border rounded-xl p-2 z-50 text-ink shadow-[0_20px_50px_rgba(36,36,37,0.12)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                className={`absolute right-0 top-full mt-3 w-[270px] bg-surface border border-border rounded-xl p-2 z-50 text-ink shadow-[0_20px_50px_rgba(36,36,37,0.12)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   connectOpen
                     ? 'opacity-100 translate-y-0 scale-100 visible pointer-events-auto'
                     : 'opacity-0 -translate-y-2 scale-98 invisible pointer-events-none'

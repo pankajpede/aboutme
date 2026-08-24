@@ -1,15 +1,18 @@
 :root {
-  --color-ink: #242425;
-  --color-ink-hover: #2C2D32;
-  --color-background: #f4eee1;
-  --color-surface: #eee6d7;
-  --color-surface-soft: #EBE3D3;
-  --color-border: #E0D7C5;
-  --color-muted: #7A756C;
-  --color-primary: #c75a1e;
-  --color-accent: #c75a1e;
-  --color-dark-text: #f4eee1;
-  --color-dark-muted: #B5B0A6;
+  --color-ink: #0f172a;
+  --color-ink-hover: #020617;
+  --color-background: #f2f8fe;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-muted: #64748b;
+  --color-primary: #0A66C2;
+  --color-accent: #004182;
+  --color-deep-blue: #004182;
+  --color-dark-text: #FFFFFF;
+  --color-dark-muted: #C7D1DB;
+  --color-banner-bg: #111111;
+  --color-banner-surface: #1B1F23;
 }
 
 * {
@@ -17,13 +20,13 @@
 }
 
 ::selection {
-  background-color: #242425;
-  color: #EEEAE3;
+  background-color: #0A66C2;
+  color: #FFFFFF;
 }
 
 ::-moz-selection {
-  background-color: #242425;
-  color: #F7F7F5;
+  background-color: #0A66C2;
+  color: #FFFFFF;
 }
 
 body {

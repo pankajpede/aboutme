@@ -16,6 +16,7 @@ export default {
         'muted': 'var(--color-muted)',
         'accent': 'var(--color-accent)',
         'primary': 'var(--color-primary)',
+        'deep-blue': 'var(--color-deep-blue)',
         'dark-text': 'var(--color-dark-text)',
         'dark-muted': 'var(--color-dark-muted)',
       },
