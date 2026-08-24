@@ -1,0 +1,6 @@
+@import './assets/scss/fonts.css';
+@import './assets/scss/reset.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

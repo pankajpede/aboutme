@@ -1,0 +1,52 @@
+:root {
+  --color-ink: #242425;
+  --color-ink-hover: #2C2D32;
+  --color-background: #f4eee1;
+  --color-surface: #eee6d7;
+  --color-surface-soft: #EBE3D3;
+  --color-border: #E0D7C5;
+  --color-muted: #7A756C;
+  --color-primary: #c75a1e;
+  --color-accent: #c75a1e;
+  --color-dark-text: #f4eee1;
+  --color-dark-muted: #B5B0A6;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+::selection {
+  background-color: #242425;
+  color: #f4eee1;
+}
+
+::-moz-selection {
+  background-color: #242425;
+  color: #f4eee1;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-ink);
+  font-family: 'Clash Display', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.font-display {
+  font-family: 'Clash Display', sans-serif;
+}
