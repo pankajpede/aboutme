@@ -12,6 +12,7 @@ const HOME_SECTIONS: SectionInfo[] = [
   { id: 'learning-sharing', label: 'Certifications' },
   { id: 'about-career', label: 'Career' },
   { id: 'selected-work', label: 'Work' },
+  { id: 'skills-tools', label: 'Skills & Tools' },
   { id: 'thinking-building', label: 'How I Think' },
   { id: 'recognition-cta', label: 'Connect' },
 ];

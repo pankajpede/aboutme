@@ -18,7 +18,7 @@ export function SelectedWork() {
     <section id="selected-work" className="py-20 lg:py-16 border-t border-border overflow-hidden bg-surface">
       <div className="container mx-auto px-5 lg:px-12 xl:px-16">
 
-        <SectionLabel number="04" title="Selected Work" />
+        <SectionLabel number="03" title="Selected Work" />
 
         <div className="mb-10">
           <h3 className="font-display text-[36px] font-semibold leading-[1] text-ink mt-2">

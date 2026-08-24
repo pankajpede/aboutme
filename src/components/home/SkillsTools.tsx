@@ -380,7 +380,7 @@ export function SkillsTools() {
         {/* Section Header */}
         <div className="mb-14">
           <div className="text-[10px] font-bold tracking-[0.12em] text-muted uppercase mb-3 flex items-center gap-2">
-            <span className="text-primary">03 /</span> SKILLS & TOOLS
+            <span className="text-primary">04 /</span> SKILLS & TOOLS
           </div>
           <h2 className="font-display text-[32px] sm:text-[42px] font-semibold leading-[1.1] text-ink tracking-tight">
             Design, product and technology — <span className="text-primary">in practice.</span>

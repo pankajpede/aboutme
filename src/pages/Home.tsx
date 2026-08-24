@@ -13,8 +13,8 @@ export default function Home({ splashFinished }: { splashFinished?: boolean }) {
       <Hero splashFinished={splashFinished} />
       <LearningSharing />
       <AboutCareer />
-      <SkillsTools />
       <SelectedWork />
+      <SkillsTools />
       <ThinkingBuilding />
       <RecognitionCTA />
       <ScrollToTopWidget />
