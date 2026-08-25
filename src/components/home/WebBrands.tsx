@@ -1,5 +1,5 @@
 import { SectionLabel } from '../ui/SectionLabel';
-import { ArrowRight } from '../ui/Icons';
+import { FiArrowUpRight } from '../ui/Icons';
 import { Link } from 'react-router-dom';
 import { projects } from '../../data/projects';
 
@@ -21,8 +21,10 @@ export function WebBrands() {
               Brand, experience, website, and responsive design.
             </p>
           </div>
-          <Link to="/work" className="inline-flex items-center text-sm font-medium hover:text-accent transition-colors group">
-            View all work <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <Link to="/work" className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link">
+            VIEW ALL WORK
+            <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+            <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
           </Link>
         </div>
 

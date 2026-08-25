@@ -1,4 +1,4 @@
-import { FiArrowRight } from '../ui/Icons';
+import { FiArrowRight, FiArrowUpRight } from '../ui/Icons';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import profilePhoto from '../../assets/images/profile-photo.jpeg';
@@ -165,17 +165,17 @@ export function Hero({ splashFinished }: { splashFinished?: boolean }) {
             </div>
 
             {/* 02. Main Name Display with B&W Profile Avatar & Typewriter */}
-            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 mb-5">
+            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 mb-5 group/header cursor-pointer">
               {/* Left: B&W Profile Avatar Image */}
               <div
-                className={`inline-block relative overflow-hidden rounded-full border-2 border-ink w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] shrink-0 shadow-md transform hover:scale-105 transition-all duration-700 ease-out ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+                className={`inline-block relative overflow-hidden rounded-full border-2 border-ink w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] shrink-0 shadow-md transform group-hover/header:scale-105 hover:scale-105 transition-all duration-700 ease-out ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                   }`}
                 style={{ transitionDelay: skipTypewriter ? '0ms' : '500ms' }}
               >
                 <img
                   src={profilePhoto}
                   alt="Pankaj Pede"
-                  className="w-full h-full object-cover filter grayscale contrast-110"
+                  className="w-full h-full object-cover filter grayscale contrast-110 group-hover/header:grayscale-0 hover:grayscale-0 transition-all duration-500"
                 />
               </div>
 
@@ -225,30 +225,6 @@ export function Hero({ splashFinished }: { splashFinished?: boolean }) {
                 onComplete={handleTypewriterComplete}
               />
             </p>
-
-            {/* 05. Action CTAs - Smooth Reveal ONLY after typing finishes */}
-            <div
-              className={`flex flex-wrap items-center justify-center gap-4 transition-all duration-700 ease-out ${ctaVisible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
-                }`}
-            >
-              {/* Primary CTA Button */}
-              <Link
-                to="/work"
-                className="inline-flex items-center justify-center bg-primary text-white h-10 px-7 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300 group shadow-sm"
-              >
-                VIEW MY WORK
-                <FiArrowRight className="ml-2.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              {/* Secondary CTA Button */}
-              <Link
-                to="/about"
-                className="inline-flex items-center justify-center bg-transparent border border-primary text-primary h-10 px-7 rounded-full text-[11px] font-bold tracking-widest uppercase hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all duration-300 group"
-              >
-                ABOUT MY JOURNEY
-                <FiArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
 
             {/* 06. Interactive Animated Scroll Indicator */}
             <button

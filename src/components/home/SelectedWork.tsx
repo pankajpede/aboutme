@@ -100,13 +100,14 @@ export function SelectedWork() {
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-6">
                 <Link
                   to={unityone.link}
-                  className="inline-flex items-center justify-center bg-primary text-white h-10 px-6 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300 group/link shadow-sm"
+                  className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
                 >
-                  VIEW CASE STUDY
-                  <FiArrowUpRight className="ml-2 w-3.5 h-3.5 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
+                  READ CASE STUDY
+                  <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                  <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
                 </Link>
 
                 {unityone.websiteUrl && (
@@ -114,10 +115,10 @@ export function SelectedWork() {
                     href={unityone.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-transparent border border-border text-ink hover:border-ink h-10 px-5 rounded-full text-[11px] font-bold tracking-widest uppercase hover:-translate-y-0.5 transition-all duration-300 group/web"
+                    className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-muted hover:text-primary transition-colors relative group/web"
                   >
                     VISIT WEBSITE
-                    <FiArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-muted group-hover/web:text-ink group-hover/web:-translate-y-0.5 group-hover/web:translate-x-0.5 transition-all" />
+                    <FiArrowUpRight className="ml-1.5 w-4 h-4 group-hover/web:-translate-y-1 group-hover/web:translate-x-1 transition-transform" />
                   </a>
                 )}
               </div>
@@ -214,13 +215,14 @@ export function SelectedWork() {
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-6">
                 <Link
                   to={fispoke.link}
-                  className="inline-flex items-center justify-center bg-primary text-white h-10 px-6 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300 group/link shadow-sm"
+                  className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
                 >
-                  VIEW CASE STUDY
-                  <FiArrowUpRight className="ml-2 w-3.5 h-3.5 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
+                  READ CASE STUDY
+                  <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                  <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
                 </Link>
 
                 {fispoke.websiteUrl && (
@@ -228,10 +230,10 @@ export function SelectedWork() {
                     href={fispoke.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-transparent border border-border text-ink hover:border-ink h-10 px-5 rounded-full text-[11px] font-bold tracking-widest uppercase hover:-translate-y-0.5 transition-all duration-300 group/web"
+                    className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-muted hover:text-primary transition-colors relative group/web"
                   >
                     VISIT WEBSITE
-                    <FiArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-muted group-hover/web:text-ink group-hover/web:-translate-y-0.5 group-hover/web:translate-x-0.5 transition-all" />
+                    <FiArrowUpRight className="ml-1.5 w-4 h-4 group-hover/web:-translate-y-1 group-hover/web:translate-x-1 transition-transform" />
                   </a>
                 )}
               </div>
@@ -271,13 +273,14 @@ export function SelectedWork() {
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-6">
                 <Link
                   to={prismx.link}
-                  className="inline-flex items-center justify-center bg-primary text-white h-10 px-6 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300 group/link shadow-sm"
+                  className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
                 >
-                  VIEW CASE STUDY
-                  <FiArrowUpRight className="ml-2 w-3.5 h-3.5 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
+                  READ CASE STUDY
+                  <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                  <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
                 </Link>
 
                 {prismx.websiteUrl && (
@@ -285,10 +288,10 @@ export function SelectedWork() {
                     href={prismx.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-transparent border border-border text-ink hover:border-ink h-10 px-5 rounded-full text-[11px] font-bold tracking-widest uppercase hover:-translate-y-0.5 transition-all duration-300 group/web"
+                    className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-muted hover:text-primary transition-colors relative group/web"
                   >
                     VISIT WEBSITE
-                    <FiArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-muted group-hover/web:text-ink group-hover/web:-translate-y-0.5 group-hover/web:translate-x-0.5 transition-all" />
+                    <FiArrowUpRight className="ml-1.5 w-4 h-4 group-hover/web:-translate-y-1 group-hover/web:translate-x-1 transition-transform" />
                   </a>
                 )}
               </div>

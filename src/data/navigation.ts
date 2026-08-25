@@ -21,21 +21,21 @@ export type ConnectItem = {
 export const SELECTED_WORK_NAV: WorkItem[] = [
   {
     num: '01',
-    title: 'PRISMX',
-    desc: 'Configurable application-generation platform',
-    link: '/work/prismx',
-  },
-  {
-    num: '02',
     title: 'UNITYONE',
     desc: 'Designing clarity across complex IT operations',
     link: '/work/unityone',
   },
   {
-    num: '03',
+    num: '02',
     title: 'FISPOKE',
     desc: 'Product / platform experience',
     link: '/work/fispoke',
+  },
+  {
+    num: '03',
+    title: 'PRISMX',
+    desc: 'Configurable application-generation platform',
+    link: '/work/prismx',
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FiArrowUpRight, FiLayers, FiCpu, FiActivity } from '../components/ui/Icons';
 import { ScrollToTopWidget } from '../components/ui/ScrollToTopWidget';
 
@@ -8,6 +8,36 @@ import laptopDcMed from '../assets/images/case-study/laptop-in-dc-medium.jpg';
 import dataMiningMed from '../assets/images/case-study/data-mining-medium.jpg';
 
 export default function UnityOneOverviewPage() {
+  const location = useLocation();
+
+  // Dynamic origin calculation based on router state or document referrer
+  const getOrigin = () => {
+    if (location.state?.from) {
+      return {
+        label: location.state.fromLabel || (location.state.from === '/' ? 'HOME' : 'WORK'),
+        path: location.state.from,
+      };
+    }
+    if (typeof document !== 'undefined' && document.referrer) {
+      try {
+        const referrerUrl = new URL(document.referrer);
+        const path = referrerUrl.pathname;
+        if (path === '/' || path === '/aboutme' || path === '/aboutme/') {
+          return { label: 'HOME', path: '/' };
+        } else if (path.includes('/about')) {
+          return { label: 'ABOUT', path: '/about' };
+        } else if (path.includes('/work')) {
+          return { label: 'WORK', path: '/work' };
+        }
+      } catch {
+        // Fallback to WORK
+      }
+    }
+    return { label: 'WORK', path: '/work' };
+  };
+
+  const origin = getOrigin();
+
   const caseStudies = [
     {
       id: 'complex-it-operations',
@@ -51,32 +81,35 @@ export default function UnityOneOverviewPage() {
     <div className="pb-16 bg-background text-ink relative">
       <ScrollToTopWidget />
 
-      <div className="container mx-auto px-5 lg:px-12 xl:px-16 space-y-16">
+      <div className="container mx-auto px-5 lg:px-12 xl:px-16 space-y-2">
 
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="pt-8">
-          <ol className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase font-mono">
+        {/* Dynamic Center-Aligned Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex justify-center text-center">
+          <ol className="flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase font-mono">
             <li>
-              <Link to="/work" className="text-muted hover:text-ink transition-colors">
-                WORK
+              <Link to={origin.path} className="text-muted hover:text-primary border-b border-transparent hover:border-primary transition-all pb-[1px]">
+                {origin.label}
               </Link>
             </li>
             <li className="text-muted select-none">/</li>
-            <li className="text-ink">
-              UNITYONE
+            <li>
+              <Link to="/work/unityone" className="text-muted hover:text-primary border-b border-transparent hover:border-primary transition-all pb-[1px]">
+                UNITYONE
+              </Link>
+            </li>
+            <li className="text-muted select-none">/</li>
+            <li className="text-ink font-bold">
+              CURATED CASE STUDIES
             </li>
           </ol>
         </nav>
 
         {/* THREE CASE STUDIES */}
-        <div id="unityone-case-studies" className="space-y-12">
+        <div id="unityone-case-studies" className="space-y-12 mt-0">
 
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-[10px] font-bold tracking-[0.15em] text-muted uppercase font-mono">
-              CURATED CASE STUDIES
-            </span>
-            <h3 className="font-display text-3xl sm:text-4xl font-bold text-ink uppercase">
-              Three Problems.<br />One Product.
+            <h3 className="font-display text-[36px] font-semibold leading-[1] text-ink mt-2">
+              Three Problems.<br /><span className="text-primary">One Product.</span>
             </h3>
             <p className="text-sm text-muted font-medium leading-relaxed">
               I focused on different parts of the experience where complexity had the greatest impact on how users understand and act.
@@ -103,7 +136,7 @@ export default function UnityOneOverviewPage() {
                       </span>
                     </div>
 
-                    <h4 className="font-display text-2xl sm:text-3xl font-bold text-ink uppercase leading-snug">
+                    <h4 className="font-display text-[36px] font-semibold leading-[1] text-ink">
                       {cs.title}
                     </h4>
 
@@ -125,18 +158,23 @@ export default function UnityOneOverviewPage() {
                     <div className="pt-4">
                       <Link
                         to={cs.link}
-                        className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-ink hover:text-muted transition-colors relative group/link"
+                        state={{ from: '/work/unityone', fromLabel: 'OVERVIEW' }}
+                        className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
                       >
-                        VIEW CASE STUDY
-                        <FiArrowUpRight className="ml-1.5 w-4 h-4 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
-                        <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-ink transition-colors"></span>
+                        READ CASE STUDY
+                        <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                        <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
                       </Link>
                     </div>
                   </div>
 
                   {/* Right Column: High-Fidelity Editorial Local Image Frame */}
                   <div className="lg:col-span-6">
-                    <Link to={cs.link} className="block overflow-hidden rounded-xl border border-border relative bg-background aspect-[16/10]">
+                    <Link
+                      to={cs.link}
+                      state={{ from: '/work/unityone', fromLabel: 'OVERVIEW' }}
+                      className="block overflow-hidden rounded-xl border border-border relative bg-background aspect-[16/10]"
+                    >
                       <img
                         src={cs.image}
                         alt={cs.imageAlt}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiArrowDown } from '../ui/Icons';
+import { FiArrowRight, FiArrowDown, FiArrowUpRight } from '../ui/Icons';
 import { PrismEngine } from './PrismEngine';
 
 export function PrismHero() {
@@ -8,40 +8,33 @@ export function PrismHero() {
   return (
     <header className="py-12 lg:py-20 border-b border-border bg-background">
       <div className="container mx-auto px-5 lg:px-12 xl:px-16">
-
-        {/* Two-Column Editorial Desktop Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-
-          {/* LEFT COLUMN (~43% Width) */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-
-            {/* Eyebrow */}
-            <div className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] uppercase text-muted mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-ink"></span>
-              01 / PRODUCT DESIGN · PLATFORM UX
+        
+        {/* Dynamic Canvas & Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div className="lg:col-span-5 space-y-6">
+            <div className="text-[10px] font-bold tracking-[0.08em] text-muted uppercase">
+              03 / PRODUCT DESIGN · PLATFORM UX
             </div>
 
-            {/* Main Title */}
-            <h1 className="font-display text-[clamp(34px,6vw,84px)] font-bold tracking-tight leading-[0.95] text-ink mb-6 uppercase">
-              PRISMX
+            <h1 className="font-display text-[44px] sm:text-[56px] lg:text-[64px] font-bold leading-[1.02] tracking-tight text-ink uppercase">
+              PrismX
             </h1>
 
-            {/* Headline */}
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink leading-tight mb-6">
-              Designing a configurable<br className="hidden sm:block" /> application-generation platform.
-            </h2>
+            <p className="font-display text-lg sm:text-xl font-bold uppercase tracking-wider text-primary">
+              Designing a configurable application-generation platform.
+            </p>
 
-            {/* Supporting Paragraph */}
-            <p className="text-base text-muted font-medium leading-relaxed mb-8 max-w-lg">
+            <p className="text-base text-muted leading-relaxed font-medium">
               I designed the experience and design system behind a platform that generates applications while allowing client-specific control over theme, components, typography and visual language.
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-10">
+            <div className="flex flex-wrap gap-2 pt-2">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/60"
+                  className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50"
                 >
                   {tag}
                 </span>
@@ -49,22 +42,22 @@ export function PrismHero() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 pt-2">
               <a
                 href="#overview"
-                className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3.5 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-colors shadow-xs group"
+                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
               >
                 VIEW PROJECT
-                <FiArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+                <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
               </a>
 
               <Link
                 to="/#selected-work"
-                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-ink hover:text-muted transition-colors relative group"
+                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-muted hover:text-primary transition-colors relative group/link"
               >
                 BACK TO WORK
-                <FiArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-ink transition-colors"></span>
+                <FiArrowUpRight className="ml-1.5 w-4 h-4 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
 

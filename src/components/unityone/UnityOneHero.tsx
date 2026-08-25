@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiArrowRight } from '../ui/Icons';
+import { FiArrowUpRight } from '../ui/Icons';
 import { UnityOneHeroTopology } from './UnityOneHeroTopology';
 
 export function UnityOneHero() {
@@ -9,39 +9,32 @@ export function UnityOneHero() {
     <header className="py-12 lg:py-20 border-b border-border bg-background">
       <div className="container mx-auto px-5 lg:px-12 xl:px-16">
         
-        {/* Two-Column Editorial Desktop Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        {/* Dynamic Topology & Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* LEFT COLUMN (~43% Width) */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            
-            {/* Eyebrow */}
-            <div className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] uppercase text-muted mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-ink"></span>
-              02 / PRODUCT DESIGN · PLATFORM UX
+          <div className="lg:col-span-6 space-y-6">
+            <div className="text-[10px] font-bold tracking-[0.08em] text-muted uppercase">
+              PRODUCT DESIGN CASE STUDY
             </div>
 
-            {/* Main Title */}
-            <h1 className="font-display text-[clamp(34px,6vw,84px)] font-bold tracking-tight leading-[0.95] text-ink mb-6 uppercase">
-              UNITYONE
+            <h1 className="font-display text-[44px] sm:text-[56px] lg:text-[64px] font-bold leading-[1.02] tracking-tight text-ink">
+              UnityOne
             </h1>
 
-            {/* Headline */}
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink leading-tight mb-6">
-              Designing clarity across<br className="hidden sm:block" /> complex IT operations.
-            </h2>
-
-            {/* Supporting Paragraph */}
-            <p className="text-base text-muted font-medium leading-relaxed mb-8 max-w-lg">
-              I designed experiences across complex IT operations, AI-assisted workflows and data-heavy reporting, bringing multiple operational needs into a more coherent product experience.
+            <p className="font-display text-lg sm:text-xl font-bold uppercase tracking-wider text-primary">
+              Designing clarity across complex IT operations.
             </p>
 
-            {/* Approved Skills Tags */}
-            <div className="flex flex-wrap gap-2 mb-10">
+            <p className="text-base text-muted leading-relaxed max-w-xl font-medium">
+              Enterprise infrastructure generates massive operational data across compute, network, and storage. I designed UnityOne to bring structure, context, and AI assistance to critical IT management workflows.
+            </p>
+
+            {/* Approved Skill Tags */}
+            <div className="flex flex-wrap gap-2 pt-2">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/60"
+                  className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50"
                 >
                   {tag}
                 </span>
@@ -49,20 +42,22 @@ export function UnityOneHero() {
             </div>
 
             {/* Hero CTAs */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-6 pt-2">
               <a
                 href="#three-experiences"
-                className="inline-flex items-center justify-center bg-primary text-white h-11 px-6 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all duration-300 group shadow-xs"
+                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
               >
                 EXPLORE EXPERIENCES
-                <FiArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
               </a>
 
               <Link
                 to="/work"
-                className="inline-flex items-center justify-center bg-transparent border border-primary text-primary h-11 px-6 rounded-full text-[11px] font-bold tracking-widest uppercase hover:bg-primary hover:text-white transition-all duration-300"
+                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-muted hover:text-primary transition-colors relative group/link"
               >
                 BACK TO WORK
+                <FiArrowUpRight className="ml-1.5 w-4 h-4 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
 

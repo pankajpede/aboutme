@@ -1,5 +1,5 @@
 import { SectionLabel } from '../ui/SectionLabel';
-import { ArrowRight } from '../ui/Icons';
+import { FiArrowUpRight } from '../ui/Icons';
 import { Link } from 'react-router-dom';
 
 export function AboutIntro() {
@@ -27,10 +27,10 @@ export function AboutIntro() {
               </p>
             </div>
 
-            <Link to="/about" className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-ink hover:text-muted transition-colors group relative self-start">
+            <Link to="/about" className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link self-start">
               READ FULL STORY
-              <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-ink transition-colors"></span>
+              <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+              <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
             </Link>
           </div>
 

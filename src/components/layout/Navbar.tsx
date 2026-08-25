@@ -99,7 +99,6 @@ export function Navbar() {
 
   const isOverviewActive = location.pathname === '/';
   const isWorkActive = location.pathname.startsWith('/work') || location.pathname.startsWith('/ux-tools');
-  const isJournalActive = location.pathname.startsWith('/journal');
   const isAboutActive = location.pathname.startsWith('/about');
 
   const renderConnectIcon = (iconName: string) => {
@@ -247,20 +246,7 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* 03. JOURNAL DIRECT ROUTE */}
-              <Link
-                to="/journal"
-                className={`hover:text-muted relative py-1 transition-colors ${
-                  isJournalActive ? 'text-ink font-extrabold' : ''
-                }`}
-              >
-                JOURNAL
-                {isJournalActive && (
-                  <span className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-ink"></span>
-                )}
-              </Link>
-
-              {/* 04. ABOUT DIRECT ROUTE */}
+              {/* 03. ABOUT DIRECT ROUTE */}
               <Link
                 to="/about"
                 className={`hover:text-muted relative py-1 transition-colors ${
@@ -269,6 +255,19 @@ export function Navbar() {
               >
                 ABOUT
                 {isAboutActive && (
+                  <span className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-ink"></span>
+                )}
+              </Link>
+
+              {/* 04. HIRE ME DIRECT ROUTE */}
+              <Link
+                to="/hire-me"
+                className={`hover:text-muted relative py-1 transition-colors ${
+                  location.pathname === '/hire-me' ? 'text-ink font-extrabold' : ''
+                }`}
+              >
+                HIRE ME
+                {location.pathname === '/hire-me' && (
                   <span className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-ink"></span>
                 )}
               </Link>
@@ -445,17 +444,6 @@ export function Navbar() {
               )}
             </div>
 
-            {/* JOURNAL ROUTE */}
-            <div className="border-b border-border pb-4">
-              <Link
-                to="/journal"
-                onClick={() => setMobileOpen(false)}
-                className="font-display text-2xl font-bold uppercase text-ink block"
-              >
-                JOURNAL
-              </Link>
-            </div>
-
             {/* ABOUT ROUTE */}
             <div className="border-b border-border pb-4">
               <Link
@@ -464,6 +452,17 @@ export function Navbar() {
                 className="font-display text-2xl font-bold uppercase text-ink block"
               >
                 ABOUT
+              </Link>
+            </div>
+
+            {/* HIRE ME ROUTE */}
+            <div className="border-b border-border pb-4">
+              <Link
+                to="/hire-me"
+                onClick={() => setMobileOpen(false)}
+                className="font-display text-2xl font-bold uppercase text-ink block"
+              >
+                HIRE ME
               </Link>
             </div>
 

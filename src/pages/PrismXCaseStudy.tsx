@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRight } from '../components/ui/Icons';
+import { FiArrowRight, FiArrowUpRight } from '../components/ui/Icons';
 import { SectionLabel } from '../components/ui/SectionLabel';
 import { PrismHero } from '../components/prismx/PrismHero';
 
@@ -383,21 +383,21 @@ export default function PrismXCaseStudy() {
               <p className="text-xs text-muted">Designing complex enterprise experiences.</p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
               <Link
                 to="/#selected-work"
-                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-ink hover:text-muted transition-colors relative group"
+                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-muted hover:text-primary transition-colors group relative"
               >
                 BACK TO WORK
-                <FiArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
-                to="/work/unitedlayer"
-                className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-colors"
+                to="/work/unityone"
+                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-primary transition-colors relative group/link"
               >
-                VIEW UNITEDLAYER
-                <FiArrowRight className="w-4 h-4" />
+                READ CASE STUDY
+                <FiArrowUpRight className="ml-1.5 w-4 h-4 text-primary group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary transition-colors"></span>
               </Link>
             </div>
           </div>
