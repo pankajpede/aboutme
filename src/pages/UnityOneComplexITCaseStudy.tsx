@@ -2,28 +2,14 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   FiArrowLeft,
-  FiArrowRight,
   FiArrowUpRight,
   FiLayers,
   FiCpu,
-  FiHardDrive,
   FiServer,
-  FiCheck,
   FiActivity,
   FiCloud,
-  FiSliders,
   FiDatabase,
-  FiSearch,
-  FiAlertCircle,
-  FiGitBranch,
-  FiEye,
-  FiShield,
-  FiTarget,
-  FiBriefcase,
-  FiUsers,
-  FiFileText,
-  FiCheckCircle,
-  FiHelpCircle
+  FiUsers
 } from '../components/ui/Icons';
 import { ScrollToTopWidget } from '../components/ui/ScrollToTopWidget';
 

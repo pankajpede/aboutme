@@ -4,17 +4,10 @@ import {
   FiArrowLeft,
   FiArrowUpRight,
   FiCpu,
-  FiMessageSquare,
-  FiCheck,
-  FiUsers,
   FiActivity,
   FiServer,
   FiZap,
-  FiSliders,
-  FiHelpCircle,
-  FiShield,
-  FiDatabase,
-  FiLayers
+  FiSliders
 } from '../components/ui/Icons';
 import { ScrollToTopWidget } from '../components/ui/ScrollToTopWidget';
 

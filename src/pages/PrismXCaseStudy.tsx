@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiArrowUpRight } from '../components/ui/Icons';
+import { FiArrowUpRight } from '../components/ui/Icons';
 import { SectionLabel } from '../components/ui/SectionLabel';
 import { PrismHero } from '../components/prismx/PrismHero';
 

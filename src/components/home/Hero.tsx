@@ -1,5 +1,3 @@
-import { FiArrowRight, FiArrowUpRight } from '../ui/Icons';
-import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import profilePhoto from '../../assets/images/profile-photo.jpeg';
 

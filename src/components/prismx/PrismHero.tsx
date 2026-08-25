@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiArrowDown, FiArrowUpRight } from '../ui/Icons';
+import { FiArrowUpRight } from '../ui/Icons';
 import { PrismEngine } from './PrismEngine';
 
 export function PrismHero() {

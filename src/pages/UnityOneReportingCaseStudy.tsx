@@ -2,17 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   FiArrowLeft,
-  FiArrowUpRight,
-  FiBarChart2,
-  FiTrendingUp,
-  FiFilter,
-  FiLayers,
-  FiShield,
-  FiActivity,
-  FiCheck,
-  FiServer,
-  FiZap,
-  FiAlertTriangle
+  FiArrowUpRight
 } from '../components/ui/Icons';
 import { ScrollToTopWidget } from '../components/ui/ScrollToTopWidget';
 

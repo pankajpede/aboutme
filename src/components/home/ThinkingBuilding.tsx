@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { SectionLabel } from '../ui/SectionLabel';
-import { FiArrowRight, FiArrowUpRight } from '../ui/Icons';
+import { FiArrowUpRight } from '../ui/Icons';
 import { Link } from 'react-router-dom';
 
 type PrincipleData = {
