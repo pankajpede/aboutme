@@ -62,7 +62,7 @@ export function LearningSharing() {
     <section id="learning-sharing" className="py-20 lg:py-16 bg-surface border-t border-border overflow-hidden">
       <div className="container mx-auto px-5 lg:px-12 xl:px-16">
 
-        <SectionLabel number="01" title="Learning & Certification" />
+        <SectionLabel number="05" title="Learning & Certification" />
 
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 gap-6">
           <div>

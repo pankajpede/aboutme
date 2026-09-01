@@ -1,609 +1,224 @@
-import { useState, useEffect } from 'react';
-import { FiCheck, FiArrowRight, FiX, FiExternalLink, FiStar } from '../ui/Icons';
-import { Link } from 'react-router-dom';
+import { SectionLabel } from '../ui/SectionLabel';
 
-// Import technology SVG assets from src/assets/images/skills/
-import iconIllustrator from '../../assets/images/skills/adobe-illustrator-cs6.svg';
-import iconPhotoshop from '../../assets/images/skills/adobe-photoshop.svg';
-import iconAngular from '../../assets/images/skills/angular.svg';
-import iconBootstrap from '../../assets/images/skills/bootstrap-5.svg';
 import iconFigma from '../../assets/images/skills/figma.svg';
-import iconGithub from '../../assets/images/skills/github.svg';
 import iconMiro from '../../assets/images/skills/miro.svg';
-import iconReactNative from '../../assets/images/skills/react-native.svg';
-import iconTailwind from '../../assets/images/skills/tailwind-css.svg';
-import iconTypescript from '../../assets/images/skills/typescript.svg';
+import iconGithub from '../../assets/images/skills/github.svg';
 
-// Tool Asset Map mapping keys to SVG sources & display names
-const TOOL_ASSETS: Record<string, { name: string; src: string }> = {
-  figma: { name: 'Figma', src: iconFigma },
-  miro: { name: 'Miro', src: iconMiro },
-  'adobe-illustrator-cs6': { name: 'Illustrator', src: iconIllustrator },
-  'adobe-photoshop': { name: 'Photoshop', src: iconPhotoshop },
-  github: { name: 'GitHub', src: iconGithub },
-  angular: { name: 'Angular', src: iconAngular },
-  'bootstrap-5': { name: 'Bootstrap 5', src: iconBootstrap },
-  'tailwind-css': { name: 'Tailwind CSS', src: iconTailwind },
-  typescript: { name: 'TypeScript', src: iconTypescript },
-  'react-native': { name: 'React Native', src: iconReactNative },
-};
+const IconOpenAI = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7938.7938 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5355-3.0137l.142.0852 4.783 2.7582a.7748.7748 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 8.4956a4.485 4.485 0 0 1 2.3657-1.9728v5.6868a.7653.7653 0 0 0 .3879.6765l5.8144 3.359-2.0201 1.1687a.0758.0758 0 0 1-.071 0l-4.8303-2.7913A4.4944 4.4944 0 0 1 2.3408 8.4956zm16.0993 3.8558l-5.8428-3.3685 2.0201-1.1686a.0758.0758 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.682a.7653.7653 0 0 0-.4021-.6764zm2.0107-3.0231l-.142-.0852-4.7735-2.7582a.7748.7748 0 0 0-.7806 0l-5.8428 3.3685V7.521a.0804.0804 0 0 1 .0332-.0615l4.981-2.8764a4.4992 4.4992 0 0 1 6.5247 4.7417zM9.0143 14.1616l-2.02-1.1686a.071.071 0 0 1-.038-.052V7.3584a4.504 4.504 0 0 1 7.371-3.4536l-.142.0804-4.7782 2.7582a.7938.7938 0 0 0-.3928.6813v6.7369zm1.3121-2.9096l2.368-1.3692 2.368 1.3692v2.7384l-2.368 1.3692-2.368-1.3692V11.252z"/>
+  </svg>
+);
 
-export interface SkillItem {
-  id: string;
-  categoryNumber: string;
-  categoryName: string;
-  skillName: string;
-  tools: string[];
-  certificate?: string;
-  proficiencyDots: number; // 5, 4, or 3
-  levelText: string; // 'Expert' | 'Advanced' | 'Working'
-  detailExplanation: string;
-  capabilities: string[];
-  relatedWork?: { name: string; link: string };
-}
+const IconClaude = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-[#D97757]" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2z" />
+  </svg>
+);
 
-const CATEGORIES = [
-  { number: '01', name: 'UX DESIGN' },
-  { number: '02', name: 'PRODUCT & UI' },
-  { number: '03', name: 'DESIGN → CODE' },
-  { number: '04', name: 'AI & EMERGING TECHNOLOGY' },
-];
+const IconGemini = () => (
+  <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none">
+    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini-grad-st)" />
+    <defs>
+      <linearGradient id="gemini-grad-st" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#1A73E8" />
+        <stop offset="0.5" stopColor="#8AB4F8" />
+        <stop offset="1" stopColor="#D93025" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
 
-const SKILL_DATA: SkillItem[] = [
-  // CATEGORY 01 — UX DESIGN
-  {
-    id: 'ux-research-mapping',
-    categoryNumber: '01',
-    categoryName: 'UX DESIGN',
-    skillName: 'UX Research & Mapping',
-    tools: ['figma', 'miro'],
-    certificate: 'Certificate · Data-Driven Design',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Planning and executing qualitative user research, mental model synthesis, persona definitions, and end-to-end user journey mapping.',
-    capabilities: [
-      'Qualitative user interviews & context gathering',
-      'Persona & mental model mapping',
-      'End-to-end user journey & workflow mapping',
-      'Synthesizing insights into actionable UX requirements'
-    ],
-    relatedWork: { name: 'UnityOne Infrastructure UX', link: '/work/unityone/complex-it-operations' }
-  },
-  {
-    id: 'interaction-design',
-    categoryNumber: '01',
-    categoryName: 'UX DESIGN',
-    skillName: 'Interaction Design',
-    tools: ['figma', 'miro'],
-    certificate: 'Certificate · Google UX Design',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Designing intuitive navigation architectures, user flows, input feedback loops, and interactive system behaviors.',
-    capabilities: [
-      'Task flows & interactive wireframing',
-      'Navigation taxonomy & hierarchy design',
-      'Micro-interactions & state transitions',
-      'Heuristic evaluation & usability optimization'
-    ],
-    relatedWork: { name: 'UnityOne Overview', link: '/work/unityone' }
-  },
-  {
-    id: 'information-architecture',
-    categoryNumber: '01',
-    categoryName: 'UX DESIGN',
-    skillName: 'Information Architecture',
-    tools: ['figma', 'miro'],
-    certificate: 'Certificate · Information Visualization',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Organizing complex enterprise data, multi-level navigation trees, and multi-tenant platform taxonomies.',
-    capabilities: [
-      'Sitemap & navigation structure design',
-      'Content hierarchy & taxonomy mapping',
-      'Data-dense dashboard architecture',
-      'Search & filtering workflow design'
-    ],
-    relatedWork: { name: 'UnityOne Complex IT Operations', link: '/work/unityone/complex-it-operations' }
-  },
-  {
-    id: 'usability-testing',
-    categoryNumber: '01',
-    categoryName: 'UX DESIGN',
-    skillName: 'Usability Testing',
-    tools: ['figma', 'miro'],
-    certificate: 'Certificate · Google UX Design',
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Structuring and facilitating moderated usability tests to evaluate prototype task success and iterate interaction details.',
-    capabilities: [
-      'Test script & scenario formulation',
-      'Moderated prototype testing sessions',
-      'Usability friction & error pattern analysis',
-      'Iterative design refinement based on data'
-    ],
-    relatedWork: { name: 'Fispoke Wealthtech Platform', link: '/work/fispoke' }
-  },
-  {
-    id: 'accessibility-design',
-    categoryNumber: '01',
-    categoryName: 'UX DESIGN',
-    skillName: 'Accessibility Design',
-    tools: ['figma', 'typescript'],
-    certificate: 'Certificate · Accessibility: Design for All',
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Implementing WCAG 2.1 AA contrast standards, keyboard focus paths, screen-reader semantics, and accessible design tokens.',
-    capabilities: [
-      'WCAG 2.1 AA color contrast compliance',
-      'Keyboard navigation & focus indicator specs',
-      'Accessible design token definitions',
-      'Aria semantics & screen reader guidelines'
-    ],
-    relatedWork: { name: 'PrismX Design System', link: '/work/prismx' }
-  },
+const IconAntigravity = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3v18M3 12h18" />
+    <circle cx="12" cy="12" r="3" fill="currentColor" />
+  </svg>
+);
 
-  // CATEGORY 02 — PRODUCT & UI
-  {
-    id: 'product-design',
-    categoryNumber: '02',
-    categoryName: 'PRODUCT & UI',
-    skillName: 'Product Design',
-    tools: ['figma', 'miro'],
-    certificate: 'Certificate · IxDF UX Management & Strategy',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'End-to-end product design bridging business objectives, technical constraints, user needs, and production UI deliverables.',
-    capabilities: [
-      'Product strategy & problem framing',
-      'End-to-end feature lifecycle execution',
-      'Cross-functional engineering & product alignment',
-      'Metrics-driven UX optimization'
-    ],
-    relatedWork: { name: 'Fispoke Private Banking Platform', link: '/work/fispoke' }
-  },
-  {
-    id: 'ui-design',
-    categoryNumber: '02',
-    categoryName: 'PRODUCT & UI',
-    skillName: 'UI Design',
-    tools: ['figma', 'adobe-illustrator-cs6', 'adobe-photoshop'],
-    certificate: 'Certificate · Udemy Figma UI UX Design Advanced',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Crafting sophisticated visual layouts, typography hierarchies, custom vector assets, and refined digital interfaces.',
-    capabilities: [
-      'High-fidelity visual interface composition',
-      'Editorial typography & grid layout',
-      'Custom SVG vector asset creation',
-      'Dark/Light mode visual balance'
-    ],
-    relatedWork: { name: 'PrismX Platform UI', link: '/work/prismx' }
-  },
-  {
-    id: 'design-systems',
-    categoryNumber: '02',
-    categoryName: 'PRODUCT & UI',
-    skillName: 'Design Systems',
-    tools: ['figma', 'github'],
-    certificate: 'Certificate · Coursera Get Started with Figma',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Architecting scalable, token-driven component libraries, variant sets, versioning rules, and cross-team documentation.',
-    capabilities: [
-      'Design token architecture (Colors, Typography, Spacing)',
-      'Figma component library & variant optimization',
-      'Component spec documentation & usage guidelines',
-      'Design system version control & governance'
-    ],
-    relatedWork: { name: 'PrismX Configurable System Engine', link: '/work/prismx' }
-  },
-  {
-    id: 'high-fi-prototyping',
-    categoryNumber: '02',
-    categoryName: 'PRODUCT & UI',
-    skillName: 'High-Fidelity Prototyping',
-    tools: ['figma'],
-    certificate: 'Certificate · Udemy Figma UI UX Design Advanced',
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Constructing dynamic, realistic interactive prototypes with variable component states and responsive micro-animations.',
-    capabilities: [
-      'Figma interactive component prototypes',
-      'State-driven simulation & logic prototyping',
-      'Micro-interaction timing & motion specs',
-      'Stakeholder walkthroughs & user validation'
-    ],
-    relatedWork: { name: 'UnityOne Operations Console Prototype', link: '/work/unityone' }
-  },
-  {
-    id: 'data-visualization',
-    categoryNumber: '02',
-    categoryName: 'PRODUCT & UI',
-    skillName: 'Data Visualization',
-    tools: ['figma'],
-    certificate: 'Certificate · Information Visualization',
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Translating dense operational metrics, real-time telemetry, and financial yields into clear, actionable visual displays.',
-    capabilities: [
-      'Operational monitoring dashboard UI',
-      'Chart taxonomy & data legend design',
-      'Real-time status indicators & threshold visual alerts',
-      'Scannable executive reporting templates'
-    ],
-    relatedWork: { name: 'UnityOne Reporting & Data', link: '/work/unityone/reporting-data' }
-  },
+const IconCursor = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="3 11 22 2 13 21 11 13 3 11" />
+  </svg>
+);
 
-  // CATEGORY 03 — DESIGN → CODE
-  {
-    id: 'design-to-code',
-    categoryNumber: '03',
-    categoryName: 'DESIGN → CODE',
-    skillName: 'Design-to-Code',
-    tools: ['figma', 'angular', 'typescript'],
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Bridging design token specs with front-end code structures for seamless developer handoff and component accuracy.',
-    capabilities: [
-      'Figma-to-Code token translation',
-      'Component API prop & state mapping',
-      'Developer handoff spec documentation',
-      'Design QA & front-end implementation review'
-    ],
-    relatedWork: { name: 'PrismX Engine Handoff', link: '/work/prismx' }
-  },
-  {
-    id: 'responsive-ui-engineering',
-    categoryNumber: '03',
-    categoryName: 'DESIGN → CODE',
-    skillName: 'Responsive UI Engineering',
-    tools: ['angular', 'bootstrap-5', 'tailwind-css', 'typescript'],
-    proficiencyDots: 5,
-    levelText: 'Expert',
-    detailExplanation: 'Engineering fluid, breakpoint-driven user interfaces that scale gracefully across mobile, tablet, and desktop viewports.',
-    capabilities: [
-      'Fluid layout mathematics & grid breakpoints',
-      'Utility-first CSS architecture (Tailwind / Bootstrap)',
-      'Cross-browser responsive testing & debugging',
-      'Touch vs mouse interaction handling'
-    ],
-    relatedWork: { name: 'Onella Portfolio Architecture', link: '/' }
-  },
-  {
-    id: 'frontend-development',
-    categoryNumber: '03',
-    categoryName: 'DESIGN → CODE',
-    skillName: 'Front-end Development',
-    tools: ['angular', 'typescript', 'github'],
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Writing structured, modular TypeScript code and component logic for scalable enterprise web applications.',
-    capabilities: [
-      'Modular component structure & props',
-      'TypeScript type definitions & interfaces',
-      'Version control workflow & Git collaboration',
-      'UI state management & dynamic rendering'
-    ],
-    relatedWork: { name: 'PrismX Application Generator', link: '/work/prismx' }
-  },
-  {
-    id: 'mobile-development',
-    categoryNumber: '03',
-    categoryName: 'DESIGN → CODE',
-    skillName: 'Mobile Development',
-    tools: ['react-native', 'typescript'],
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Designing and prototyping cross-platform mobile user interfaces adhering to iOS Human Interface and Material guidelines.',
-    capabilities: [
-      'React Native component layout & styling',
-      'Mobile navigation patterns & gesture flows',
-      'Touch target & thumb-zone usability optimization',
-      'Cross-platform iOS & Android UI alignment'
-    ],
-    relatedWork: { name: 'Fispoke Mobile Advisor Portal', link: '/work/fispoke' }
-  },
+const IconNotion = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.047-.326L17.86 1.777c-.467-.373-.84-.373-1.68-.326L3.992 2.617c-.373.047-.466.233-.373.466l.84 1.125zm1.12 4.108v12.787c0 .653.466.84 1.12.793l14.428-.887c.746-.047.887-.606.887-1.167V7.15c0-.513-.233-.746-.746-.7l-14.894.887c-.513.047-.795.326-.795.979zm13.447.606c.093.42.047.887-.373.933l-.7.093v10.547c-.56.326-1.167.42-1.727.42-.84 0-1.26-.28-1.587-.84l-4.527-7.233v6.86c.653.047.933.187 1.026.653l-3.5.233c.093-.466.42-.606 1.026-.653V9.297c0-.513.187-.793.746-.84.793-.093 1.353.187 1.773.84l4.62 7.373V9.67c-.653-.047-.887-.233-.98-.653l3.253-.187z"/>
+  </svg>
+);
 
-  // CATEGORY 04 — AI & EMERGING TECHNOLOGY
-  {
-    id: 'ai-assisted-product-design',
-    categoryNumber: '04',
-    categoryName: 'AI & EMERGING TECHNOLOGY',
-    skillName: 'AI-assisted Product Design',
-    tools: ['figma'],
-    certificate: 'Certificate · Udemy GPT Prompt Engineering for UX/UI',
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Integrating AI tools into the design workflow for accelerated visual ideation, copy variation, and design research synthesis.',
-    capabilities: [
-      'AI-powered design exploration & moodboarding',
-      'Generative content & copy iteration',
-      'Accelerated user feedback synthesis',
-      'AI workflow tool integration'
-    ],
-    relatedWork: { name: 'UnityOne AI Assistant UX', link: '/work/unityone/ai-assistant' }
-  },
-  {
-    id: 'ai-ux-assistive-workflows',
-    categoryNumber: '04',
-    categoryName: 'AI & EMERGING TECHNOLOGY',
-    skillName: 'AI UX & Assistive Workflows',
-    tools: ['figma'],
-    certificate: 'Certificate · Udemy GPT Prompt Engineering for UX/UI',
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Designing decision-support interfaces and conversational AI tools that bring intelligent recommendations into user workflows.',
-    capabilities: [
-      'Context-aware AI decision support UI',
-      'Conversational interface UX & prompt flows',
-      'AI confidence score & recommendation display',
-      'Operator override & control mechanisms'
-    ],
-    relatedWork: { name: 'UnityOne AI Assistant Case Study', link: '/work/unityone/ai-assistant' }
-  },
-  {
-    id: 'ai-prototyping',
-    categoryNumber: '04',
-    categoryName: 'AI & EMERGING TECHNOLOGY',
-    skillName: 'AI Prototyping',
-    tools: ['figma'],
-    certificate: 'Certificate · Udemy GPT Prompt Engineering for UX/UI',
-    proficiencyDots: 4,
-    levelText: 'Advanced',
-    detailExplanation: 'Prototyping dynamic AI assistant interactions, prompt inputs, and intelligent recommendation loops in interactive prototypes.',
-    capabilities: [
-      'Simulating AI recommendation flows',
-      'Interactive prompt input & feedback prototyping',
-      'Testing user trust & AI transparency patterns',
-      'AI assistant state & fallback design'
-    ],
-    relatedWork: { name: 'UnityOne AI Assistant Prototype', link: '/work/unityone/ai-assistant' }
-  },
-];
+const IconFigJam = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-[#9747FF]" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-2h2v2h-2zm0-11h2v7h-2v-7z" />
+  </svg>
+);
+
+const IconStorybook = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-[#FF4785]" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16.71.243l-.12 2.718a.157.157 0 0 0 .232.14l1.782-.96a.158.158 0 0 1 .23.141v18.72c0 .484-.37.892-.853.924l-11.8.8A.934.934 0 0 1 5.25 21.8V4.538a.933.933 0 0 1 .867-.93l10.593-.765V.243z"/>
+  </svg>
+);
+
+const IconVSCode = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-[#007ACC]" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.12a.75.75 0 0 0-.96.06L.26 7.73a.75.75 0 0 0 .02 1.08l4.49 4.07-4.49 4.07a.75.75 0 0 0-.02 1.08l1.705 1.66a.75.75 0 0 0 .96.06l4.12-3.12 9.46 8.63c.49.45 1.2.56 1.705.29l4.94-2.377c.54-.26.85-.79.85-1.38V3.967c0-.59-.31-1.12-.85-1.38zM18 16.5l-6.5-4.5L18 7.5v9z"/>
+  </svg>
+);
+
+const IconChart = () => (
+  <svg className="w-3.5 h-3.5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="14" />
+  </svg>
+);
 
 export function SkillsTools() {
-  const [selectedSkill, setSelectedSkill] = useState<SkillItem | null>(null);
-
-  // Close modal on escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedSkill(null);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  const capabilityCards = [
+    {
+      number: '01',
+      title: 'PRODUCT STRATEGY',
+      items: [
+        'Problem framing',
+        'Opportunity discovery',
+        'Prioritization',
+        'Product thinking'
+      ],
+      toolItems: [
+        { name: 'ChatGPT', CustomIcon: IconOpenAI },
+        { name: 'Gemini', CustomIcon: IconGemini },
+        { name: 'Claude', CustomIcon: IconClaude },
+        { name: 'Notion', CustomIcon: IconNotion }
+      ]
+    },
+    {
+      number: '02',
+      title: 'EXPERIENCE & SYSTEMS',
+      items: [
+        'UX architecture',
+        'User journeys',
+        'Design systems',
+        'Tokens & Accessibility'
+      ],
+      toolItems: [
+        { name: 'Figma', iconSrc: iconFigma },
+        { name: 'FigJam', CustomIcon: IconFigJam },
+        { name: 'Miro', iconSrc: iconMiro },
+        { name: 'Storybook', CustomIcon: IconStorybook }
+      ]
+    },
+    {
+      number: '03',
+      title: 'DATA & INSIGHTS',
+      items: [
+        'Data visualization',
+        'Dashboards',
+        'Complex workflows',
+        'Decision making'
+      ],
+      toolItems: [
+        { name: 'ECharts', CustomIcon: IconChart },
+        { name: 'Chart.js', CustomIcon: IconChart },
+        { name: 'InfoVis', CustomIcon: IconChart }
+      ]
+    },
+    {
+      number: '04',
+      title: 'BUILD & DELIVERY',
+      items: [
+        'Prototyping',
+        'Design → Code',
+        'Collaboration',
+        'Rapid implementation'
+      ],
+      toolItems: [
+        { name: 'Antigravity', CustomIcon: IconAntigravity },
+        { name: 'Cursor', CustomIcon: IconCursor },
+        { name: 'GitHub', iconSrc: iconGithub },
+        { name: 'VS Code', CustomIcon: IconVSCode }
+      ]
+    }
+  ];
 
   return (
-    <section id="skills-tools" className="py-20 lg:py-24 bg-background border-t border-border relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-5 lg:px-12 xl:px-16">
-
-        {/* Section Header */}
-        <div className="mb-14">
-          <div className="text-[10px] font-bold tracking-[0.12em] text-muted uppercase mb-3 flex items-center gap-2">
-            <span className="text-primary">04 /</span> SKILLS & TOOLS
-          </div>
-          <h2 className="font-display text-[32px] sm:text-[42px] font-semibold leading-[1.1] text-ink tracking-tight">
-            Design, product and technology — <span className="text-primary">in practice.</span>
-          </h2>
+    <section id="skills-tools" className="py-14 lg:py-16 bg-surface border-t border-border overflow-hidden">
+      <div className="container mx-auto px-5 lg:px-12 xl:px-16 space-y-10">
+        
+        {/* Compact Section Header */}
+        <div>
+          <SectionLabel number="01" title="PRODUCT CAPABILITIES" />
+          <h3 className="font-display text-[36px] font-semibold leading-[1] text-ink mt-2">
+            What I bring to product.<br />
+            <span className="text-primary">Design expertise & product thinking.</span>
+          </h3>
         </div>
 
-        {/* Categories & Skill Cards Grid */}
-        <div className="space-y-16">
-          {CATEGORIES.map((cat) => {
-            const categorySkills = SKILL_DATA.filter(
-              (s) => s.categoryNumber === cat.number
-            );
-
-            return (
-              <div key={cat.number} className="space-y-6">
-                {/* Editorial Category Section Label */}
-                <div className="flex items-center gap-3 border-b border-border/70 pb-3">
-                  <span className="text-xs font-bold text-primary font-mono tracking-wider">
-                    {cat.number}
-                  </span>
-                  <span className="text-xs font-bold tracking-[0.1em] text-ink uppercase font-display">
-                    {cat.name}
+        {/* 4 Pillar Capability Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {capabilityCards.map((card) => (
+            <div
+              key={card.number}
+              className="p-5 bg-background border border-border rounded-xl hover:border-border/80 transition-all duration-300 flex flex-col justify-between shadow-2xs"
+            >
+              <div>
+                {/* Top Metadata Number */}
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="font-mono text-[11px] font-bold tracking-widest text-muted">
+                    {card.number}
                   </span>
                 </div>
 
-                {/* 3-Column Card Grid (Desktop: 3, Tablet: 2, Mobile: 1) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-                  {categorySkills.map((skill) => (
-                    <div
-                      key={skill.id}
-                      onClick={() => setSelectedSkill(skill)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          setSelectedSkill(skill);
-                        }
-                      }}
-                      tabIndex={0}
-                      role="button"
-                      aria-label={`View details for ${skill.skillName}`}
-                      className="bg-surface border border-border hover:border-ink/40 rounded-xl p-4 sm:p-4.5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm cursor-pointer group focus:outline-none focus:ring-2 focus:ring-primary/40 min-h-[145px]"
+                {/* Category Title */}
+                <h4 className="font-display text-sm sm:text-base font-bold text-ink uppercase tracking-normal mb-3.5 leading-snug">
+                  {card.title}
+                </h4>
+
+                {/* Capability List Items */}
+                <ul className="space-y-2 mb-5">
+                  {card.items.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="text-xs sm:text-sm font-medium text-ink/90 flex items-start gap-2 leading-tight"
                     >
-                      {/* Top Part: 1. Title -> 2. Certificate -> 3. Proficiency */}
-                      <div className="space-y-1.5 mb-3">
-                        {/* 1. Skill Title */}
-                        <h3 className="font-display text-base font-semibold text-ink group-hover:text-primary transition-colors leading-tight">
-                          {skill.skillName}
-                        </h3>
+                      <span className="inline-block w-1.5 h-1.5 rounded-full mt-1 shrink-0 bg-muted/40" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                        {/* 2. Certificate Name */}
-                        {skill.certificate ? (
-                          <div className="flex items-center gap-1.5 text-[11px] font-medium text-ink/80 truncate">
-                            <FiCheck className="w-3.5 h-3.5 text-primary shrink-0" />
-                            <span className="truncate">{skill.certificate}</span>
-                          </div>
-                        ) : null}
-
-                        {/* 3. Rating / Proficiency */}
-                        <div className="flex items-center gap-2 pt-0.5">
-                          <div className="flex items-center gap-0.5 text-primary">
-                            {Array.from({ length: 5 }).map((_, idx) => (
-                              <FiStar
-                                key={idx}
-                                fill={idx < skill.proficiencyDots ? 'currentColor' : 'none'}
-                                className={`w-3.5 h-3.5 ${
-                                  idx < skill.proficiencyDots
-                                    ? 'text-primary'
-                                    : 'text-border'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="text-[11px] font-medium text-muted">
-                            {skill.levelText}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Bottom Part: Left Logos & Right View Details Button */}
-                      <div className="pt-2.5 border-t border-border/50 flex items-center justify-between gap-3">
-                        {/* Left: Technology SVG Logos */}
-                        <div className="flex items-center gap-2.5">
-                          {skill.tools.map((toolKey) => {
-                            const toolObj = TOOL_ASSETS[toolKey];
-                            if (!toolObj) return null;
-                            return (
-                              <div
-                                key={toolKey}
-                                className="relative group/tool opacity-90 hover:opacity-100 transition-opacity"
-                              >
-                                <img
-                                  src={toolObj.src}
-                                  alt={toolObj.name}
-                                  className="max-h-[18px] w-auto object-contain shrink-0"
-                                />
-                                {/* Custom Tooltip on Hover */}
-                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-0.5 bg-ink text-background text-[9px] font-bold tracking-wider uppercase rounded shadow-md opacity-0 group-hover/tool:opacity-100 transition-opacity duration-150 pointer-events-none whitespace-nowrap z-20">
-                                  {toolObj.name}
-                                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-0.5 border-4 border-transparent border-t-ink"></div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        {/* Right: View details button */}
-                        <span className="text-[11px] font-semibold text-ink group-hover:text-primary transition-colors flex items-center gap-1 shrink-0">
-                          View details
-                          <FiArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                        </span>
-                      </div>
+              {/* Card Bottom: Supporting Tools Evidence */}
+              <div className="pt-3.5 border-t border-border/60 mt-auto">
+                <div className="text-[9px] font-mono font-semibold tracking-wider text-muted/70 uppercase mb-2">
+                  TOOLS USED
+                </div>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {card.toolItems.map((tool, tIdx) => (
+                    <div
+                      key={tIdx}
+                      className="px-2 py-0.5 bg-surface border border-border/80 rounded-md flex items-center gap-1.5 text-[10.5px] font-display font-medium text-ink/90 hover:border-primary/40 transition-colors shadow-2xs"
+                    >
+                      {tool.CustomIcon ? (
+                        <tool.CustomIcon />
+                      ) : (
+                        <img
+                          src={tool.iconSrc}
+                          alt={`${tool.name} logo`}
+                          className="w-3 h-3 shrink-0 object-contain"
+                        />
+                      )}
+                      <span>{tool.name}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
       </div>
-
-      {/* Lightweight Detail Modal / Panel */}
-      {selectedSkill && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-xs"
-          onClick={() => setSelectedSkill(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-skill-title"
-        >
-          <div
-            className="bg-surface border border-border rounded-xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedSkill(null)}
-              className="absolute top-5 right-5 p-1 rounded-md text-muted hover:text-ink hover:bg-background border border-transparent hover:border-border transition-all"
-              aria-label="Close detail modal"
-            >
-              <FiX className="w-5 h-5" />
-            </button>
-
-            {/* Modal Category & Title */}
-            <div className="text-[10px] font-bold tracking-widest text-primary uppercase mb-1">
-              {selectedSkill.categoryNumber} / {selectedSkill.categoryName}
-            </div>
-            <h3 id="modal-skill-title" className="font-display text-2xl font-bold text-ink mb-4">
-              {selectedSkill.skillName}
-            </h3>
-
-            {/* Tools Used Row */}
-            <div className="mb-6">
-              <span className="text-[10px] font-bold tracking-widest text-muted uppercase block mb-2">
-                TECHNOLOGIES & TOOLS
-              </span>
-              <div className="flex flex-wrap gap-3">
-                {selectedSkill.tools.map((tKey) => {
-                  const tObj = TOOL_ASSETS[tKey];
-                  if (!tObj) return null;
-                  return (
-                    <div
-                      key={tKey}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-background border border-border rounded-lg text-xs font-semibold text-ink"
-                    >
-                      <img src={tObj.src} alt={tObj.name} className="h-4 w-auto object-contain" />
-                      <span>{tObj.name}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Short Explanation */}
-            <div className="mb-6">
-              <span className="text-[10px] font-bold tracking-widest text-muted uppercase block mb-2">
-                PRACTICAL CAPABILITY
-              </span>
-              <p className="text-sm text-muted leading-relaxed">
-                {selectedSkill.detailExplanation}
-              </p>
-            </div>
-
-            {/* Core Bullet Points */}
-            <div className="mb-6">
-              <span className="text-[10px] font-bold tracking-widest text-muted uppercase block mb-2">
-                KEY HIGHLIGHTS
-              </span>
-              <ul className="space-y-2">
-                {selectedSkill.capabilities.map((cap, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-ink/90 font-medium">
-                    <FiCheck className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
-                    <span>{cap}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Certificate & Related Work Links */}
-            <div className="pt-5 border-t border-border flex flex-wrap items-center justify-between gap-4">
-              {selectedSkill.certificate ? (
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-ink">
-                  <FiCheck className="w-4 h-4 text-primary" />
-                  <span>{selectedSkill.certificate}</span>
-                </div>
-              ) : (
-                <div></div>
-              )}
-
-              {selectedSkill.relatedWork && (
-                <Link
-                  to={selectedSkill.relatedWork.link}
-                  onClick={() => setSelectedSkill(null)}
-                  className="inline-flex items-center text-xs font-bold text-primary hover:underline gap-1 uppercase tracking-wider"
-                >
-                  {selectedSkill.relatedWork.name}
-                  <FiExternalLink className="w-3.5 h-3.5" />
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

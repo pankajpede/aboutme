@@ -190,34 +190,27 @@ export function Hero({ splashFinished }: { splashFinished?: boolean }) {
 
             {/* 03. Primary Positioning Statement - Typewriter */}
             <h2
-              className={`font-display text-xl lg:text-[20px] font-normal leading-[1.25] text-ink mb-5 max-w-xl mx-auto text-center tracking-tight transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              className={`font-display text-xl lg:text-[22px] font-medium leading-[1.3] text-ink mb-0 max-w-xl mx-auto text-center tracking-tight transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
             >
-              <Typewriter text="Designing at the intersection" delay={1500} speed={25} active={mounted} skip={skipTypewriter} /><br />
-              <Typewriter text="of " delay={2250} speed={25} active={mounted} skip={skipTypewriter} />
-              <span className="font-semibold">
-                <Typewriter text="people" delay={2330} speed={25} active={mounted} skip={skipTypewriter} />
-              </span>
-              <Typewriter text=", " delay={2480} speed={25} active={mounted} skip={skipTypewriter} />
-              <span className="font-semibold">
-                <Typewriter text="business" delay={2530} speed={25} active={mounted} skip={skipTypewriter} />
-              </span>
-              <Typewriter text=" and " delay={2730} speed={25} active={mounted} skip={skipTypewriter} />
-              <span className="font-semibold">
-                <Typewriter text="technology" delay={2850} speed={25} active={mounted} skip={skipTypewriter} />
-              </span>
-              <Typewriter text="." delay={3100} speed={25} active={mounted} skip={skipTypewriter} />
+              <Typewriter
+                text="I design products, not just interfaces."
+                delay={1500}
+                speed={25}
+                active={mounted}
+                skip={skipTypewriter}
+              />
             </h2>
 
             {/* 04. Supporting Line - Typewriter */}
             <p
-              className={`text-sm lg:text-base font-medium tracking-wide text-muted mb-5 max-w-md mx-auto text-center transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              className={`text-sm lg:text-base font-normal tracking-wide text-muted mb-5 max-w-lg mx-auto text-center transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
             >
               <Typewriter
-                text="UX · Product · Systems · Digital Experiences"
-                delay={3250}
-                speed={25}
+                text="Turning complex problems into simple, valuable experiences."
+                delay={2600}
+                speed={22}
                 active={mounted}
                 skip={skipTypewriter}
                 onComplete={handleTypewriterComplete}

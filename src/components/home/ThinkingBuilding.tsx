@@ -89,12 +89,12 @@ export function ThinkingBuilding() {
   const activePrinciple = THINKING_PRINCIPLES[activeIdx];
 
   return (
-    <section id="thinking-building" className="bg-surface border-t border-border">
+    <section id="thinking-building" className="bg-background border-t border-border">
 
       {/* ------------------------------------------------------------------------ */}
       {/* DESKTOP STICKY SCROLL-DRIVEN EXPERIENCE (lg:block) */}
       {/* ------------------------------------------------------------------------ */}
-      <div ref={containerRef} className="hidden lg:block relative h-[280vh] bg-surface">
+      <div ref={containerRef} className="hidden lg:block relative h-[280vh] bg-background">
 
         {/* Sticky Viewport Container with top offset to clear navbar */}
         <div className="sticky top-0 h-screen flex flex-col justify-between pt-24 pb-8 overflow-hidden">
@@ -104,7 +104,7 @@ export function ThinkingBuilding() {
             {/* FULL WIDTH CENTER-ALIGNED HEADER BLOCK (Included in Sticky Viewport) */}
             <div className="text-center max-w-3xl mx-auto mb-4 flex flex-col items-center">
               <div className="flex justify-center">
-                <SectionLabel number="05" title="How I Think" />
+                <SectionLabel number="06" title="How I Think" />
               </div>
               <h3 className="font-display text-[36px] font-semibold leading-[1] text-ink">
                 Beyond <span className="text-primary">the interface.</span>
@@ -132,7 +132,7 @@ export function ThinkingBuilding() {
                         onClick={() => setActiveIdx(idx)}
                         className={`p-3 rounded-xl border transition-all duration-300 flex items-center justify-between cursor-pointer ${isActive
                           ? 'bg-ink text-dark-text border-ink shadow-md translate-x-1 font-bold'
-                          : 'bg-background/80 border-border text-muted hover:text-ink hover:border-ink/50'
+                          : 'bg-surface border-border text-muted hover:text-ink hover:border-ink/50'
                           }`}
                       >
                         <span className="text-xs sm:text-sm font-bold tracking-wider uppercase font-display">
@@ -161,18 +161,18 @@ export function ThinkingBuilding() {
                   </p>
 
                   {/* Abstract Visual System Flow Diagram */}
-                  <div className="p-4 bg-background border border-border rounded-xl text-center">
+                  <div className="p-4 bg-surface border border-border rounded-xl text-center">
                     <span className="text-[8px] font-bold tracking-widest text-muted uppercase block mb-2.5">
                       PRODUCT THINKING VISUAL SYSTEM
                     </span>
 
                     {activePrinciple.visualType === 'why' && (
                       <div className="flex items-center justify-center gap-3 text-xs font-bold font-mono text-ink">
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded">USER</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded">USER</span>
                         <span className="text-muted">➔</span>
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded">PROBLEM</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded">PROBLEM</span>
                         <span className="text-muted">➔</span>
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded">CONTEXT</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded">CONTEXT</span>
                         <span className="text-muted">➔</span>
                         <span className="px-3 py-1.5 bg-ink text-dark-text rounded shadow-2xs">OPPORTUNITY</span>
                       </div>
@@ -180,9 +180,9 @@ export function ThinkingBuilding() {
 
                     {activePrinciple.visualType === 'complexity' && (
                       <div className="flex items-center justify-center gap-3 text-xs font-bold font-mono text-ink">
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded text-muted">COMPLEXITY</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded text-muted">COMPLEXITY</span>
                         <span className="text-muted">➔</span>
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded">STRUCTURE</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded">STRUCTURE</span>
                         <span className="text-muted">➔</span>
                         <span className="px-3 py-1.5 bg-ink text-dark-text rounded shadow-2xs">CLARITY</span>
                       </div>
@@ -190,9 +190,9 @@ export function ThinkingBuilding() {
 
                     {activePrinciple.visualType === 'outcome' && (
                       <div className="flex items-center justify-center gap-3 text-xs font-bold font-mono text-ink">
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded">USER NEED</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded">USER NEED</span>
                         <span className="text-muted">➔</span>
-                        <span className="px-3 py-1.5 bg-surface border border-border rounded">EXPERIENCE</span>
+                        <span className="px-3 py-1.5 bg-background border border-border rounded">EXPERIENCE</span>
                         <span className="text-muted">➔</span>
                         <span className="px-3 py-1.5 bg-ink text-dark-text rounded shadow-2xs">OUTCOME</span>
                       </div>
@@ -200,11 +200,11 @@ export function ThinkingBuilding() {
 
                     {activePrinciple.visualType === 'iterate' && (
                       <div className="flex items-center justify-center gap-2.5 text-xs font-bold font-mono text-ink">
-                        <span className="px-2.5 py-1 bg-surface border border-border rounded">IDEA</span>
+                        <span className="px-2.5 py-1 bg-background border border-border rounded">IDEA</span>
                         <span className="text-muted">➔</span>
-                        <span className="px-2.5 py-1 bg-surface border border-border rounded">PROTOTYPE</span>
+                        <span className="px-2.5 py-1 bg-background border border-border rounded">PROTOTYPE</span>
                         <span className="text-muted">➔</span>
-                        <span className="px-2.5 py-1 bg-surface border border-border rounded">LEARN</span>
+                        <span className="px-2.5 py-1 bg-background border border-border rounded">LEARN</span>
                         <span className="text-muted">➔</span>
                         <span className="px-2.5 py-1 bg-ink text-dark-text rounded shadow-2xs">IMPROVE</span>
                       </div>
@@ -215,21 +215,6 @@ export function ThinkingBuilding() {
               </div>
 
             </div>
-
-            {/* BOTTOM TRANSITION BAR */}
-            {/* <div className="pt-4 border-t border-border flex flex-wrap items-center justify-between gap-4">
-              <div className="text-[10px] font-bold tracking-widest text-muted uppercase font-mono">
-                GOOD DESIGN IS NOT JUST ABOUT WHAT USERS SEE. IT IS ABOUT WHAT THEY CAN DO.
-              </div>
-              <Link
-                to="/work"
-                className="inline-flex items-center text-[11px] font-bold tracking-widest uppercase text-ink hover:text-muted transition-colors group relative"
-              >
-                VIEW MY WORK
-                <FiArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-ink transition-colors"></span>
-              </Link>
-            </div> */}
 
           </div>
 
@@ -245,7 +230,7 @@ export function ThinkingBuilding() {
         {/* Centered Mobile Intro */}
         <div className="text-center flex flex-col items-center">
           <div className="flex justify-center">
-            <SectionLabel number="05" title="How I Think" />
+            <SectionLabel number="06" title="How I Think" />
           </div>
           <h3 className="font-display text-[36px] font-semibold leading-[1] text-ink mt-2 uppercase mb-3">
             Beyond <span className="text-primary">the interface.</span>
@@ -258,7 +243,7 @@ export function ThinkingBuilding() {
         {/* 4 Principle Flow */}
         <div className="space-y-10">
           {THINKING_PRINCIPLES.map((principle) => (
-            <div key={principle.id} className="p-5 bg-background border border-border rounded-xl space-y-4">
+            <div key={principle.id} className="p-5 bg-surface border border-border rounded-xl space-y-4">
               <div className="flex items-center justify-between border-b border-border pb-3">
                 <span className="text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded bg-ink text-dark-text">
                   0{principle.number} / 04
@@ -278,7 +263,7 @@ export function ThinkingBuilding() {
                 {principle.content}
               </p>
 
-              <div className="p-3 bg-surface border border-border rounded space-y-2">
+              <div className="p-3 bg-background border border-border rounded space-y-2">
                 <span className="text-[8px] font-bold tracking-widest text-muted uppercase block">
                   FOCUS & VISUAL FLOW
                 </span>

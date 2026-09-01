@@ -62,7 +62,7 @@ export function AboutCareer() {
   const activeIdx = CAREER_STAGES.length - 1; // Stage 05 (Next Chapter) permanently active
 
   return (
-    <section id="about-career" className="py-20 lg:py-16 border-t border-border overflow-hidden">
+    <section id="about-career" className="py-20 lg:py-16 bg-background border-t border-border overflow-hidden">
       <div className="container mx-auto px-5 lg:px-12 xl:px-16">
 
         <SectionLabel number="02" title="Career Journey" />

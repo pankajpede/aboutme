@@ -220,25 +220,49 @@ export function Navbar() {
                         TOOLS & EXPERIMENTS
                       </div>
 
-                      <div className="space-y-2.5">
-                        {TOOLS_EXPERIMENTS_NAV.map((item) => (
-                          <Link
-                            key={item.num}
-                            to={item.link}
-                            onClick={() => setWorkOpen(false)}
-                            className="group block p-1.5 rounded-md hover:bg-surface/60 transition-colors"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="font-display text-xs font-bold text-ink group-hover:translate-x-0.5 transition-transform">
-                                {item.title}
-                              </span>
-                              <span className="text-[9px] font-bold text-muted font-mono">{item.num}</span>
-                            </div>
-                            <p className="text-[10px] text-muted leading-tight truncate">
-                              {item.desc}
-                            </p>
-                          </Link>
-                        ))}
+                      <div className="space-y-4">
+                        {TOOLS_EXPERIMENTS_NAV.map((item) => {
+                          if (item.external) {
+                            return (
+                              <a
+                                key={item.num}
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setWorkOpen(false)}
+                                className="group block p-2 rounded-lg hover:bg-surface/60 transition-colors"
+                              >
+                                <div className="flex items-center justify-between mb-1">
+                                  <span className="font-display text-sm font-bold text-ink group-hover:translate-x-1 transition-transform">
+                                    {item.num} / {item.title}
+                                  </span>
+                                  <FiArrowUpRight className="w-3.5 h-3.5 text-primary group-hover:text-ink group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                                </div>
+                                <p className="text-[11px] text-muted leading-tight font-medium">
+                                  {item.desc}
+                                </p>
+                              </a>
+                            );
+                          }
+                          return (
+                            <Link
+                              key={item.num}
+                              to={item.link}
+                              onClick={() => setWorkOpen(false)}
+                              className="group block p-2 rounded-lg hover:bg-surface/60 transition-colors"
+                            >
+                              <div className="flex items-center justify-between mb-1">
+                                <span className="font-display text-sm font-bold text-ink group-hover:translate-x-1 transition-transform">
+                                  {item.num} / {item.title}
+                                </span>
+                                <FiArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-ink group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                              </div>
+                              <p className="text-[11px] text-muted leading-tight font-medium">
+                                {item.desc}
+                              </p>
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
 
@@ -428,16 +452,33 @@ export function Navbar() {
                   <div>
                     <div className="text-[9px] font-bold tracking-widest text-muted uppercase mb-2">TOOLS & EXPERIMENTS</div>
                     <div className="space-y-2">
-                      {TOOLS_EXPERIMENTS_NAV.map((item) => (
-                        <Link
-                          key={item.num}
-                          to={item.link}
-                          onClick={() => setMobileOpen(false)}
-                          className="block text-sm font-medium text-ink hover:text-muted"
-                        >
-                          {item.title}
-                        </Link>
-                      ))}
+                      {TOOLS_EXPERIMENTS_NAV.map((item) => {
+                        if (item.external) {
+                          return (
+                            <a
+                              key={item.num}
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setMobileOpen(false)}
+                              className="block text-sm font-medium text-ink hover:text-muted flex items-center gap-1"
+                            >
+                              <span>{item.title}</span>
+                              <FiArrowUpRight className="w-3.5 h-3.5 text-primary inline" />
+                            </a>
+                          );
+                        }
+                        return (
+                          <Link
+                            key={item.num}
+                            to={item.link}
+                            onClick={() => setMobileOpen(false)}
+                            className="block text-sm font-medium text-ink hover:text-muted"
+                          >
+                            {item.title}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

@@ -28,7 +28,7 @@ export const SELECTED_WORK_NAV: WorkItem[] = [
   {
     num: '02',
     title: 'FISPOKE',
-    desc: 'Product / platform experience',
+    desc: 'Private banking & wealth management platform',
     link: '/work/fispoke',
   },
   {
@@ -42,33 +42,28 @@ export const SELECTED_WORK_NAV: WorkItem[] = [
 export const TOOLS_EXPERIMENTS_NAV: WorkItem[] = [
   {
     num: '01',
-    title: 'UX TOOLS',
-    desc: "Tools and experiments I'm building",
-    link: '/ux-tools',
+    title: 'BRAND BUILDER',
+    desc: 'Specimen & token generator',
+    link: 'https://pankajpede.github.io/OX-brandbuilder/#/brand-builder',
+    external: true,
   },
   {
     num: '02',
-    title: 'DESIGN SYSTEM TOOLS',
-    desc: 'Systems, tokens and UI experiments',
-    link: '/ux-tools#ds',
+    title: 'SEMANTIC UI BUILDER',
+    desc: 'Component architecture & tokenization',
+    link: '/#ufx-studio',
   },
   {
     num: '03',
-    title: 'AI × UX',
-    desc: 'AI-powered UX experiments',
-    link: '/ux-tools#ai',
+    title: 'UX AUDITOR',
+    desc: 'Heuristic & accessibility auditor',
+    link: '/#ufx-studio',
   },
   {
     num: '04',
-    title: 'PRODUCT EXPERIMENTS',
-    desc: 'Self-initiated product ideas',
-    link: '/ux-tools#experiments',
-  },
-  {
-    num: '05',
-    title: 'COMING SOON',
-    desc: 'New experiments in progress',
-    link: '/ux-tools#coming-soon',
+    title: 'DESIGN TOKEN BUILDER',
+    desc: 'CSS & design variable pipeline',
+    link: '/#ufx-studio',
   },
 ];
 
