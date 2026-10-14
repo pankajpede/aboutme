@@ -1,6 +1,6 @@
 import { SectionLabel } from '../ui/SectionLabel';
 import { projects } from '../../data/projects';
-import { FiArrowUpRight, FiLayers, FiCpu, FiActivity, FiUser, FiClipboard, FiDollarSign } from '../ui/Icons';
+import { FiArrowUpRight } from '../ui/Icons';
 import { Link } from 'react-router-dom';
 import dcRoomMed from '../../assets/images/case-study/dc-room-medium.jpg';
 import dcRoomLarge from '../../assets/images/case-study/dc-room-large.jpg';
