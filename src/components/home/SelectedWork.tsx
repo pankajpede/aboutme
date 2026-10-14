@@ -8,6 +8,80 @@ import fispokeCaseStudy from '../../assets/images/case-study/fispoke-casestudy.a
 import fispokeLogo from '../../assets/images/logo/fispoke-logo.svg';
 import prismxMed from '../../assets/images/case-study/prismx-medium.jpg';
 import prismxLarge from '../../assets/images/case-study/prismx-large.jpg';
+import iconFigma from '../../assets/images/skills/figma.svg';
+import iconMiro from '../../assets/images/skills/miro.svg';
+import iconGithub from '../../assets/images/skills/github.svg';
+
+const IconVSCode = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
+  <svg className={`${className} shrink-0 text-[#007ACC]`} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.12a.75.75 0 0 0-.96.06L.26 7.73a.75.75 0 0 0 .02 1.08l4.49 4.07-4.49 4.07a.75.75 0 0 0-.02 1.08l1.705 1.66a.75.75 0 0 0 .96.06l4.12-3.12 9.46 8.63c.49.45 1.2.56 1.705.29l4.94-2.377c.54-.26.85-.79.85-1.38V3.967c0-.59-.31-1.12-.85-1.38zM18 16.5l-6.5-4.5L18 7.5v9z"/>
+  </svg>
+);
+
+const IconStorybook = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
+  <svg className={`${className} shrink-0 text-[#FF4785]`} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16.71.243l-.12 2.718a.157.157 0 0 0 .232.14l1.782-.96a.158.158 0 0 1 .23.141v18.72c0 .484-.37.892-.853.924l-11.8.8A.934.934 0 0 1 5.25 21.8V4.538a.933.933 0 0 1 .867-.93l10.593-.765V.243z"/>
+  </svg>
+);
+
+const IconNotion = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
+  <svg className={`${className} shrink-0 text-ink`} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.047-.326L17.86 1.777c-.467-.373-.84-.373-1.68-.326L3.992 2.617c-.373.047-.466.233-.373.466l.84 1.125zm1.12 4.108v12.787c0 .653.466.84 1.12.793l14.428-.887c.746-.047.887-.606.887-1.167V7.15c0-.513-.233-.746-.746-.7l-14.894.887c-.513.047-.795.326-.795.979zm13.447.606c.093.42.047.887-.373.933l-.7.093v10.547c-.56.326-1.167.42-1.727.42-.84 0-1.26-.28-1.587-.84l-4.527-7.233v6.86c.653.047.933.187 1.026.653l-3.5.233c.093-.466.42-.606 1.026-.653V9.297c0-.513.187-.793.746-.84.793-.093 1.353.187 1.773.84l4.62 7.373V9.67c-.653-.047-.887-.233-.98-.653l3.253-.187z"/>
+  </svg>
+);
+
+const IconCloud = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
+  <svg className={`${className} shrink-0 text-[#0284C7]`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+  </svg>
+);
+
+type ToolItem = {
+  name: string;
+  iconSrc?: string;
+  CustomIcon?: React.ComponentType<{ className?: string }>;
+};
+
+const unityoneTools: ToolItem[] = [
+  { name: 'Figma', iconSrc: iconFigma },
+  { name: 'Cloud', CustomIcon: IconCloud },
+  { name: 'VS Code', CustomIcon: IconVSCode },
+  { name: 'Miro', iconSrc: iconMiro },
+];
+
+const fispokeTools: ToolItem[] = [
+  { name: 'Figma', iconSrc: iconFigma },
+  { name: 'Miro', iconSrc: iconMiro },
+  { name: 'Notion', CustomIcon: IconNotion },
+  { name: 'VS Code', CustomIcon: IconVSCode },
+];
+
+const prismxTools: ToolItem[] = [
+  { name: 'Figma', iconSrc: iconFigma },
+  { name: 'Storybook', CustomIcon: IconStorybook },
+  { name: 'VS Code', CustomIcon: IconVSCode },
+  { name: 'GitHub', iconSrc: iconGithub },
+];
+
+function ToolBadgeList({ tools }: { tools: ToolItem[] }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 mb-8">
+      {tools.map((tool) => (
+        <div
+          key={tool.name}
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface/80 border border-border/80 text-[11px] font-medium text-ink/80 hover:border-ink/40 transition-colors"
+        >
+          {tool.iconSrc ? (
+            <img src={tool.iconSrc} alt={tool.name} className="w-3.5 h-3.5 object-contain" />
+          ) : tool.CustomIcon ? (
+            <tool.CustomIcon className="w-3.5 h-3.5" />
+          ) : null}
+          <span>{tool.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function SelectedWork() {
   const unityone = projects.find((p) => p.id === 'unityone') || projects[0];
@@ -41,7 +115,7 @@ export function SelectedWork() {
               <p className="text-base text-muted mb-6 max-w-md leading-relaxed">{unityone.description}</p>
 
               {/* Three Product Experiences Grid Showcase */}
-              <div className="mb-8 p-4 bg-surface border border-border rounded-lg space-y-3">
+              {/* <div className="mb-8 p-4 bg-surface border border-border rounded-lg space-y-3">
                 <div className="text-[9px] font-bold tracking-widest text-muted uppercase mb-2">
                   THREE MAJOR PRODUCT EXPERIENCES
                 </div>
@@ -89,16 +163,10 @@ export function SelectedWork() {
                     <FiArrowUpRight className="w-3.5 h-3.5 text-muted group-hover/item:text-primary group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 transition-all shrink-0" />
                   </Link>
                 </div>
-              </div>
+              </div> */}
 
-              {/* Skill Tags */}
-              <div className="flex flex-wrap gap-2 mb-10">
-                {unityone.tags.map((tag) => (
-                  <span key={tag} className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {/* Tools & Tech Stack */}
+              <ToolBadgeList tools={unityoneTools} />
 
               <div className="flex flex-wrap items-center gap-6">
                 <Link
@@ -156,7 +224,7 @@ export function SelectedWork() {
               <p className="text-base text-muted mb-6 max-w-md leading-relaxed">{fispoke.description}</p>
 
               {/* Three Product Experiences Showcase */}
-              <div className="mb-8 p-4 bg-surface border border-border rounded-lg space-y-3">
+              {/* <div className="mb-8 p-4 bg-surface border border-border rounded-lg space-y-3">
                 <div className="text-[9px] font-bold tracking-widest text-muted uppercase mb-2">
                   THREE MAJOR PRODUCT EXPERIENCES
                 </div>
@@ -204,16 +272,10 @@ export function SelectedWork() {
                     </>
                   )}
                 </div>
-              </div>
+              </div> */}
 
-              {/* Skill Tags */}
-              <div className="flex flex-wrap gap-2 mb-10">
-                {fispoke.tags.map((tag) => (
-                  <span key={tag} className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {/* Tools & Tech Stack */}
+              <ToolBadgeList tools={fispokeTools} />
 
               <div className="flex flex-wrap items-center gap-6">
                 <Link
@@ -255,7 +317,7 @@ export function SelectedWork() {
 
           {/* Project 03: PRISMX */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center group">
-            
+
             {/* Content (Order-1 on Mobile/Tablet, Order-2 on Desktop) */}
             <div className="lg:col-span-5 order-1 lg:order-2">
               <div className="text-[10px] font-bold tracking-[0.08em] text-muted uppercase mb-3">
@@ -263,15 +325,10 @@ export function SelectedWork() {
               </div>
               <h4 className="font-display text-[36px] font-semibold leading-[1] text-ink mt-2 mb-3">{prismx.title}</h4>
               <p className="text-sm font-semibold tracking-wide text-ink uppercase mb-4">{prismx.headline}</p>
-              <p className="text-base text-muted mb-8 max-w-md leading-relaxed">{prismx.description}</p>
+              <p className="text-base text-muted mb-6 max-w-md leading-relaxed">{prismx.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-10">
-                {prismx.tags.map((tag) => (
-                  <span key={tag} className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {/* Tools & Tech Stack */}
+              <ToolBadgeList tools={prismxTools} />
 
               <div className="flex flex-wrap items-center gap-6">
                 <Link

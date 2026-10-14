@@ -63,16 +63,21 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-10">
-                {['PRODUCT DESIGN', 'UX ARCHITECTURE', 'COMPLEX SYSTEMS', 'DATA EXPERIENCE'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Product Capabilities */}
+              <div className="mb-8">
+                <span className="text-[9px] font-mono font-bold tracking-widest text-muted/70 uppercase block mb-2.5">
+                  PRODUCT CAPABILITIES
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {['COMPLEX WORKFLOWS', 'DATA VISUALIZATION', 'AI DECISION SUPPORT', 'UX ARCHITECTURE'].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[9px] font-bold tracking-widest px-2.5 py-1 border border-border/80 rounded uppercase text-ink/80 bg-surface/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <Link
@@ -129,16 +134,21 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              {/* Approved Tags */}
-              <div className="flex flex-wrap gap-2 mb-10">
-                {['PRODUCT DESIGN', 'FINTECH UX', 'WORKFLOW DESIGN', 'PRODUCT THINKING'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Product Capabilities */}
+              <div className="mb-8">
+                <span className="text-[9px] font-mono font-bold tracking-widest text-muted/70 uppercase block mb-2.5">
+                  PRODUCT CAPABILITIES
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {['MULTI-SIDED WORKFLOWS', 'USER JOURNEYS & ONBOARDING', 'FINANCIAL PRODUCT STRATEGY', 'RAPID PROTOTYPING'].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[9px] font-bold tracking-widest px-2.5 py-1 border border-border/80 rounded uppercase text-ink/80 bg-surface/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <Link
@@ -170,20 +180,25 @@ export default function WorkPage() {
               <p className="text-sm font-semibold tracking-wide text-ink uppercase mb-4">
                 Designing a configurable application-generation platform.
               </p>
-              <p className="text-base text-muted mb-8 max-w-md leading-relaxed">
+              <p className="text-base text-muted mb-6 max-w-md leading-relaxed">
                 I designed the experience and design system behind a platform that generates applications while allowing client-specific control over theme, components, typography and visual language.
               </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-10">
-                {['PRODUCT DESIGN', 'PLATFORM UX', 'DESIGN SYSTEMS', 'CONFIGURATION'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[9px] font-bold tracking-widest px-3 py-1 border border-border rounded uppercase text-muted bg-surface/50"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Product Capabilities */}
+              <div className="mb-8">
+                <span className="text-[9px] font-mono font-bold tracking-widest text-muted/70 uppercase block mb-2.5">
+                  PRODUCT CAPABILITIES
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {['DESIGN SYSTEMS & TOKENS', 'CONFIGURABLE ARCHITECTURE', 'DESIGN → CODE INTEGRATION', 'RAPID IMPLEMENTATION'].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[9px] font-bold tracking-widest px-2.5 py-1 border border-border/80 rounded uppercase text-ink/80 bg-surface/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <Link

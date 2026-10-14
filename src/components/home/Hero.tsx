@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import profilePhoto from '../../assets/images/profile-photo.jpeg';
+import { Mascot } from '../ui/Mascot';
+import kamranDirections from '../../assets/images/avatar/kamran-directions.webp';
+import kamranReactions from '../../assets/images/avatar/kamran-reactions.webp';
 
 function Typewriter({
   text,
@@ -162,18 +164,20 @@ export function Hero({ splashFinished }: { splashFinished?: boolean }) {
               </span>
             </div>
 
-            {/* 02. Main Name Display with B&W Profile Avatar & Typewriter */}
+            {/* 02. Main Name Display with Interactive Mascot Avatar & Typewriter */}
             <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 mb-5 group/header cursor-pointer">
-              {/* Left: B&W Profile Avatar Image */}
+              {/* Left: Interactive Cursor-Following Mascot Avatar */}
               <div
-                className={`inline-block relative overflow-hidden rounded-full border-2 border-ink w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] shrink-0 shadow-md transform group-hover/header:scale-105 hover:scale-105 transition-all duration-700 ease-out ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+                className={`inline-flex items-center justify-center relative overflow-hidden rounded-full border-2 border-ink bg-surface/90 w-[54px] h-[54px] sm:w-[68px] sm:h-[68px] lg:w-[84px] lg:h-[84px] shrink-0 shadow-md transform group-hover/header:scale-105 hover:scale-105 transition-all duration-700 ease-out ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                   }`}
                 style={{ transitionDelay: skipTypewriter ? '0ms' : '500ms' }}
               >
-                <img
-                  src={profilePhoto}
-                  alt="Pankaj Pede"
-                  className="w-full h-full object-cover filter grayscale contrast-110 group-hover/header:grayscale-0 hover:grayscale-0 transition-all duration-500"
+                <Mascot
+                  directions={kamranDirections}
+                  reactions={kamranReactions}
+                  size="100%"
+                  className="w-full h-full flex items-center justify-center"
+                  label="Pankaj Pede Interactive Mascot"
                 />
               </div>
 
