@@ -1,7 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Mascot } from '../ui/Mascot';
-import kamranDirections from '../../assets/images/avatar/kamran-directions.webp';
-import kamranReactions from '../../assets/images/avatar/kamran-reactions.webp';
 import resumePdf from '../../assets/documents/PankajPede_UXUiDesigner_12.pdf';
 import { HeroIdBadge } from './HeroIdBadge';
 import {
