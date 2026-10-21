@@ -42,19 +42,19 @@ function AnimatedRoutes({ splashFinished }: { splashFinished: boolean }) {
       >
         <Routes location={location}>
           <Route path="/" element={<Home splashFinished={splashFinished} />} />
-          
+
           {/* Work & Case Study Routes */}
           <Route path="/work" element={<WorkPage />} />
           <Route path="/work/prismx" element={<PrismXCaseStudy />} />
           <Route path="/work/prism" element={<Navigate to="/work/prismx" replace />} />
-          
+
           {/* UnityOne Project Area */}
           <Route path="/work/unityone" element={<UnityOneOverviewPage />} />
           <Route path="/work/unityone/complex-it-operations" element={<UnityOneComplexITCaseStudy />} />
           <Route path="/work/unityone/ai-assistant" element={<UnityOneAIAssistantCaseStudy />} />
           <Route path="/work/unityone/reporting-data" element={<UnityOneReportingCaseStudy />} />
           <Route path="/work/unitedlayer" element={<Navigate to="/work/unityone" replace />} />
-          
+
           <Route path="/work/fispoke" element={<FispokeCaseStudy />} />
 
           {/* Global Nav Routes */}
@@ -81,7 +81,7 @@ function App() {
       <BrandSplash onComplete={() => setSplashFinished(true)} />
       <div className="min-h-screen flex flex-col bg-background selection:bg-ink selection:text-dark-text">
         <Navbar />
-        <main className="flex-1 pt-[72px] lg:pt-[88px] flex flex-col">
+        <main className="flex-1 pt-[72px] flex flex-col">
           <AnimatedRoutes splashFinished={splashFinished} />
         </main>
         <Footer />
